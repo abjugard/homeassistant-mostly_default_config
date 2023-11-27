@@ -1,0 +1,12 @@
+{
+  "domain": "mostly_default_config",
+  "name": "Mostly Default Config",
+  "config_flow": false,
+  "codeowners": ["@abjugard"],
+  "dependencies": ["recorder"],
+  "requirements": [],
+  "documentation": "https://github.com/abjugard/homeassistant-mostly_default_config",
+  "issue_tracker": "https://github.com/abjugard/homeassistant-mostly_default_config/issues",
+  "iot_class": "assumed_state",
+  "version": "1.0"
+}

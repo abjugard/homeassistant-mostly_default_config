@@ -1,0 +1,5 @@
+{
+  "name": "Mostly Default Config",
+  "render_readme": true,
+  "iot_class": "assumed_state"
+}
