@@ -1,5 +1,5 @@
 """Component providing mostly default configuration for somewhat new users."""
-from .const import DOMAIN
+from .const import *
 
 import asyncio
 
@@ -10,16 +10,15 @@ from homeassistant.setup import async_setup_component
 
 async def async_setup(hass: core.HomeAssistant, config: dict) -> bool:
     conf = config.get(DOMAIN)
-    excepting = set(conf['excepting'] if 'excepting' in conf else [])
+    exclude = set(conf.get(EXCLUDE, []))
 
-    default_component = await async_get_integration(hass, 'default_config')
-    default_dependencies = set(default_component.manifest['dependencies'])
-    to_load = default_dependencies - excepting
+    default_component = await async_get_integration(hass, DEFAULT_CONFIG)
+    default_dependencies = set(default_component.manifest[DEPENDENCIES])
 
     await asyncio.gather(
         *(
             async_setup_component(hass, domain, config)
-            for domain in to_load
+            for domain in default_dependencies - exclude
         )
     )
 
